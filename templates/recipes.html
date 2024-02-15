@@ -2,13 +2,12 @@
 {% load static %}
 
 {% block title %}Recipes{% endblock %}
+
 {% block content %}
     <ul>
         {% for recipe in recipes %}
             <li>
-                <h2>
-                    {{recipe.name}}
-                </h2>
+                <h2>{{recipe.name}}</h2>
             </li>
             <h3>
                 <a href ="{{recipe.link}}">Recipe Link</a>

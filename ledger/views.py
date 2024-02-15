@@ -31,6 +31,7 @@ def sinigang(request):
         ],
         "link": "/recipe/1"
     }
+
     return render(request, 'recipe.html', ctx)
 
 def adobo(request):
@@ -68,6 +69,7 @@ def adobo(request):
         ],
         "link": "/recipe/2"
     }
+
     return render(request, 'recipe.html', ctx)
 
 def recipe_list(request):
@@ -135,6 +137,7 @@ def recipe_list(request):
             }
         ]
     }
+    
     return render(request, 'recipes.html', ctx)
 
 
