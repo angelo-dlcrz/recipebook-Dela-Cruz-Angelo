@@ -5,14 +5,14 @@
 
 {% block content %}
     <h2>
-        {{name}}
+        {{recipe.name}}
     </h2>
     <ul>
-        {% for ingredient in ingredients %}
-            <li>{{ingredient.name}} - {{ingredient.quantity}}</li>
+        {% for ingredients in recipe.ingredient.all %}
+            <li>{{ingredients.ingredient.name}} - {{ingredients.quantity}}</li>
         {% endfor %}
     </ul>
     <h3>
-        <a href ="{{link}}">Recipe Link</a>
+        <a href ="{{recipe.get_absolute_url}}">Recipe Link</a>
     </h3>
 {% endblock %}

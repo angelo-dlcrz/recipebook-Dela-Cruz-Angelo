@@ -5,12 +5,12 @@
 
 {% block content %}
     <ul>
-        {% for recipe in recipes %}
+        {% for recipe in recipe_list %}
             <li>
                 <h2>{{recipe.name}}</h2>
             </li>
             <h3>
-                <a href ="{{recipe.link}}">Recipe Link</a>
+                <a href ="{{recipe.get_absolute_url}}">Recipe Link</a>
             </h3>
         {% endfor %}
     </ul>
