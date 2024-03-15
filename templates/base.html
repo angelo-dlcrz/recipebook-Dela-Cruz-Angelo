@@ -14,5 +14,13 @@
             {% block content %} {% endblock %}
         </div>
         {% block scripts %}{% endblock %}
+        {% if request.user.is_authenticated %}
+        <form method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit">logout</button>
+        </form>
+        {% else %}
+        <a href="{% url 'login' %}">Log In</a>
+        {% endif %}
     </body>
 </html>
