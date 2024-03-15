@@ -3,21 +3,25 @@
 
 {% block title %}Recipe{% endblock %}
 
-{% block content %}
-    {% if request.user.is_authenticated %}
-    <h2>
-        You are viewing {{ recipe.name }}
-    </h2>
-    <ul>
-        {% for ingredients in recipe.ingredient.all %}
-            <li>{{ ingredients.ingredient.name }} - {{ ingredients.quantity }}</li>
-        {% endfor %}
-    </ul>
-    <h3>
-        <a href ="{{ recipe.get_absolute_url }}">Recipe Link</a>
-    </h3>
-    <h3>
-        Author: {{ recipe.author }}
-    </h3>
-    {% endif %}
-{% endblock %}
+{% if request.user.is_authenticated %}
+
+    {% block header %}
+        <h2>You are viewing {{ recipe.name }}</h2>
+    {% endblock %}
+
+    {% block content %}
+        
+        <ul>
+            {% for ingredients in recipe.ingredient.all %}
+                <li>{{ ingredients.ingredient.name }} - {{ ingredients.quantity }}</li>
+            {% endfor %}
+        </ul>
+        <h3>
+            <a href ="{{ recipe.get_absolute_url }}">Recipe Link</a>
+        </h3>
+        <h3>
+            Author: {{ recipe.author }}
+        </h3>
+    {% endblock %}
+
+{% endif %}

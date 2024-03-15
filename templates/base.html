@@ -9,18 +9,21 @@
     <body>
         <header>
             <h1>Recipe Book</h1>
+            {% if request.user.is_authenticated %}
+            <form method="post" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button type="submit">logout</button>
+            </form>
+            {% else %}
+            <a href="{% url 'login' %}">Log In</a>
+            {% endif %}
+        </header>
+        <header>
+            {% block header %} {% endblock %}
         </header>
         <div id = "content">
             {% block content %} {% endblock %}
         </div>
         {% block scripts %}{% endblock %}
-        {% if request.user.is_authenticated %}
-        <form method="post" action="{% url 'logout' %}">
-            {% csrf_token %}
-            <button type="submit">logout</button>
-        </form>
-        {% else %}
-        <a href="{% url 'login' %}">Log In</a>
-        {% endif %}
     </body>
 </html>
